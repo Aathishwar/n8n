@@ -1,13 +1,12 @@
-# Use the official n8n image
+# Use official n8n Docker image
 FROM n8nio/n8n:latest
 
-# Expose the port that n8n will listen on
+# Expose n8n port
 EXPOSE 10000
 
-# Set default environment variables
+# Environment variables
 ENV N8N_PORT=10000
 ENV N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
-ENV DB_POSTGRESDB_CONNECTION_URL=${DB_POSTGRESDB_CONNECTION_URL}
 
-# Start n8n with tunnel mode (so Render detects open port automatically)
+# Start n8n (Render auto-detects open port)
 CMD ["n8n", "start", "--tunnel"]
