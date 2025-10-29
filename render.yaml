@@ -5,12 +5,20 @@ services:
     plan: free
     region: singapore
     envVars:
-      - key: DB_TYPE
-        value: postgresdb
-      - key: N8N_BASIC_AUTH_ACTIVE
-        value: true
-      - key: N8N_PORT
-        value: 10000
-      - key: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
-        value: true
-    dockerCommand: n8n start --tunnel
+			  - key: DB_TYPE
+			    value: postgresdb
+			  - key: DB_POSTGRESDB_CONNECTION_URL
+			    sync: false # We'll set it safely via Render dashboard
+			  - key: N8N_BASIC_AUTH_ACTIVE
+			    value: true
+			  - key: N8N_BASIC_AUTH_USER
+			    sync: false
+			  - key: N8N_BASIC_AUTH_PASSWORD
+			    sync: false
+			  - key: N8N_ENCRYPTION_KEY
+			    sync: false
+			  - key: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
+			    value: true
+			  - key: N8N_PORT
+		  	  value: 10000
+
